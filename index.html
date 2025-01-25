@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Поздравления учителю</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #e9ecef;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        h1 {
+            text-align: center;
+            margin-top: 100px;
+            color: #333;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: #007bff;
+            padding: 10px 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            padding: 14px 20px;
+            font-size: 18px;
+            transition: background-color 0.3s;
+        }
+        .navbar a:hover {
+            background-color: #0056b3;
+        }
+        .section {
+            margin: 20px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 80%;
+            max-width: 600px;
+        }
+        .button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        .button:hover {
+            background-color: #218838;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 1001;
+        }
+        .modal-content {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            width: 80%;
+            max-width: 500px;
+            position: relative;
+        }
+        .close {
+            color: #aaa;
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .close:hover {
+            color: black;
+        }
+        .modal-content h2 {
+            margin-top: 0;
+            color: #007bff;
+        }
+        .modal-content p {
+            font-size: 16px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+<div class="navbar">
+    <a href="congratulations.html">Поздравления</a>
+    <a href="cards.html">Открытки</a>
+</div>
+
+<h1>Поздравления учителю</h1>
+
+<div class="section" id="congratulations">
+    <a href="congratulations.html">Перейти к поздравлениям</a>
+</div>
+
+<div class="section" id="cards">
+    <a href="cards.html">Перейти к открыткам</a>
+</div>
+
+<button class="button" onclick="openModal()">О создателях</button>
+
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h2>Создатели</h2>
+        Завершинский Степан Юрьевич <br>
+        <br>
+        <h2> участники в создании(те кто написали поздравление учителю)</h2>
+        <p>Егор<br>
+            Сергей И <br>
+            Глеб <br>
+            Юля Ш <br>
+            Маша.Л <br>
+            Наташа <br>
+            Стёпа <br>
+            Варя <br>
+            Ксюша.Б <br>
+            Алиса.П <br>
+            ☆Аня.М.☆ <br>
+            Семён.Р <br>
+            Никита.С. <br>
+            Дарья.Д <br>
+
+        
+        </p>
+    </div>
+</div>
+
+<script>
+    function openModal() {
+        document.getElementById('modal').style.display = 'flex';
+    }
+
+    function closeModal() {
+        document.getElementById('modal').style.display = 'none';
+    }
+
+    window.onclick = function(event) {
+        if (event.target == document.getElementById('modal')) {
+            closeModal();
+        }
+    }
+</script>
+
+</body>
+</html>
