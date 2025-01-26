@@ -145,6 +145,28 @@
         .file-input:hover::before {
             background-color: #0056b3;
         }
+        .music-controls button {
+            margin: 5px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        .music-controls button:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+        .music-controls button:active {
+            background-color: #004494;
+            transform: scale(0.95);
+        }
+        .music-controls button:focus {
+            outline: none;
+        }
     </style>
 </head>
 <body>
@@ -163,7 +185,22 @@
 
 <div class="section" id="creators">
     <h2>О создателях</h2>
-    <p>Сайт был сделан Завершинским Степаном Юрьевичем при помощи наших одноклассников 5-ого А класса</p>
+    <p>Сайт разработан Завершинским Степаном при участии одноклассников 5 А класса</p>
+</div>
+
+<div class="section" id="music-player">
+    <h2>Музыкальный плеер</h2>
+    <audio id="audioPlayer" controls>
+        <source src="path/to/your/music1.mp3" type="audio/mpeg">
+        <source src="path/to/your/music2.mp3" type="audio/mpeg">
+        <!-- Добавьте больше источников, если нужно -->
+
+    </audio>
+    <div class="music-controls">
+        <button onclick="playPrevious()">Предыдущий</button>
+        <button onclick="playPause()">Пауза/Воспроизведение</button>
+        <button onclick="playNext()">Следующий</button>
+    </div>
 </div>
 
 <footer>
@@ -183,6 +220,35 @@
             reader.readAsDataURL(file);
         }
     }
+
+    const tracks = [
+        'music1.mp3',
+        'music.mp3',
+        // Добавьте больше путей к трекам
+    ];
+    let currentTrackIndex = 0;
+    const audioPlayer = document.getElementById('audioPlayer');
+
+    function playPrevious() {
+        currentTrackIndex = (currentTrackIndex - 1 + tracks.length) % tracks.length;
+        audioPlayer.src = tracks[currentTrackIndex];
+        audioPlayer.play();
+    }
+
+    function playNext() {
+        currentTrackIndex = (currentTrackIndex + 1) % tracks.length;
+        audioPlayer.src = tracks[currentTrackIndex];
+        audioPlayer.play();
+    }
+
+    function playPause() {
+        if (audioPlayer.paused) {
+            audioPlayer.play();
+        } else {
+            audioPlayer.pause();
+        }
+    }
+
 </script>
 
 </body>
