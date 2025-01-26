@@ -7,7 +7,10 @@
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #e9ecef;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            background-size: cover;
             margin: 0;
             padding: 0;
             display: flex;
@@ -107,13 +110,47 @@
             font-size: 16px;
             color: #555;
         }
+        .file-input {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        .file-input:hover {
+            background-color: #0056b3;
+        }
+        .file-input::-webkit-file-upload-button {
+            visibility: hidden;
+        }
+        .file-input::before {
+            content: 'Измените фон на свой (по желанию)';
+            display: inline-block;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            outline: none;
+            white-space: nowrap;
+            -webkit-user-select: none;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        .file-input:hover::before {
+            background-color: #0056b3;
+        }
     </style>
 </head>
 <body>
 
 <div class="navbar">
     <a href="congratulations.html">Поздравления</a>
-    <a href="cards.html">Открытки</a>
 </div>
 
 <h1>Поздравления учителю</h1>
@@ -122,51 +159,28 @@
     <a href="congratulations.html">Перейти к поздравлениям</a>
 </div>
 
-<div class="section" id="cards">
-    <a href="cards.html">Перейти к открыткам</a>
+<input type="file" id="backgroundInput" class="file-input" accept="image/*" onchange="setBackground(event)">
+
+<div class="section" id="creators">
+    <h2>О создателях</h2>
+    <p>Сайт был сделан Завершинским Степаном Юрьевичем при помощи наших одноклассников 5-ого А класса</p>
 </div>
 
-<button class="button" onclick="openModal()">О создателях</button>
-
-<div id="modal" class="modal">
-    <div class="modal-content">
-        <span class="close" onclick="closeModal()">&times;</span>
-        <h2>Создатели</h2>
-        Завершинский Степан Юрьевич <br>
-        <br>
-        <h2> участники в создании(те кто написали поздравление учителю)</h2>
-        <p>Егор<br>
-            Сергей И <br>
-            Глеб <br>
-            Юля Ш <br>
-            Маша.Л <br>
-            Наташа <br>
-            Стёпа <br>
-            Варя <br>
-            Ксюша.Б <br>
-            Алиса.П <br>
-            ☆Аня.М.☆ <br>
-            Семён.Р <br>
-            Никита.С. <br>
-            Дарья.Д <br>
-
-        
-        </p>
+<footer>
+    <div class="footer-content">
+        <p>&copy; 2025 Завершинский Степан Юрьевич Все права защищены</p>
     </div>
-</div>
+</footer>
 
 <script>
-    function openModal() {
-        document.getElementById('modal').style.display = 'flex';
-    }
-
-    function closeModal() {
-        document.getElementById('modal').style.display = 'none';
-    }
-
-    window.onclick = function(event) {
-        if (event.target == document.getElementById('modal')) {
-            closeModal();
+    function setBackground(event) {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                document.body.style.backgroundImage = `url(${e.target.result})`;
+            };
+            reader.readAsDataURL(file);
         }
     }
 </script>
